@@ -535,7 +535,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 67.8
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -561,8 +561,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15878375, y: -0.596841, z: 0.121971145, w: 0.77697587}
-  m_LocalPosition: {x: 3.64, y: 2.29, z: -2.12}
+  m_LocalRotation: {x: 0.08013255, y: -0.91401845, z: 0.22196881, w: 0.3299681}
+  m_LocalPosition: {x: 2.1512938, y: 2.5974348, z: 2.1491506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -815,7 +815,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.45748213, y: -0.34167844, z: 0.19607721, w: -0.79719496}
+  m_LocalRotation: {x: 0.37346506, y: 0.37259236, z: -0.16705899, w: 0.8329407}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1995,6 +1995,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1592181114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1592181116}
+  - component: {fileID: 1592181115}
+  m_Layer: 0
+  m_Name: LookDev Rig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1592181115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592181114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b509496f56e85834ebe7d3c5b5eadbe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookDev.LookDevRig
+  targetCamera: {fileID: 330585545}
+  targetLight: {fileID: 410087040}
+  settings:
+    pivot: {x: -0.48027968, y: 0.47106528, z: -1.0205963}
+    cameraYaw: -140.3
+    cameraPitch: 27.3
+    cameraDistance: 4.636153
+    fieldOfView: 67.8
+    cameraTurntable: 0
+    cameraTurntableSpeed: 20
+    lightYaw: 48.199997
+    lightPitch: 48.3
+    lightFollowsCamera: 0
+    lightIntensity: 2
+    lightColor: {r: 1, g: 1, b: 1, a: 1}
+    shadowStrength: 1
+    lightDistance: 5
+    lightTurntable: 0
+    lightTurntableSpeed: 30
+  showOverlay: 1
+  orbitSpeed: 0.25
+  panSpeed: 1
+  zoomStep: 0.1
+--- !u!4 &1592181116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592181114}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1863591268
 Mesh:
   m_ObjectHideFlags: 0
@@ -2188,3 +2255,4 @@ SceneRoots:
   - {fileID: 1471879993}
   - {fileID: 462927274}
   - {fileID: 988575245}
+  - {fileID: 1592181116}
