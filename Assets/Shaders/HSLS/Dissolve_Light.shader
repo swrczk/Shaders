@@ -58,6 +58,9 @@ Shader "Custom/Dissolve_Light"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
+            #pragma multi_compile_fragment _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
+            #pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW _SHADOWS_SOFT_MEDIUM _SHADOWS_SOFT_HIGH
+            
             struct Attributes
             {
                 float4 positionOS : POSITION;
@@ -70,6 +73,7 @@ Shader "Custom/Dissolve_Light"
                 float4 positionHCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
                 float3 normalWS : TEXCOORD1;
+                float3 worldPosition : TEXCOORD2;
             };
 
             Varyings vert(Attributes IN)
@@ -78,15 +82,17 @@ Shader "Custom/Dissolve_Light"
                 OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
                 OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
                 OUT.uv = TRANSFORM_TEX(IN.uv, _NoiseTex);
+                OUT.worldPosition =  TransformObjectToWorld(IN.positionOS.xyz);
                 return OUT;
             }
 
             half4 frag(Varyings IN) : SV_Target
             {
                 float3 n = normalize(IN.normalWS);
+                float4 shadow_coord = TransformWorldToShadowCoord(IN.worldPosition);
+                Light light = GetMainLight(shadow_coord); 
                 float3 ambient = SampleSH(n);
-                Light light = GetMainLight();
-                float diffuse = saturate(dot(n, light.direction));
+                float diffuse = saturate(dot(n, light.direction)) * light.shadowAttenuation;
                 half3 lighted_color = (diffuse * light.color + ambient) * _BaseColor.rgb;
                 float edge = SampleDissolveNoise(IN.uv);
                 half3 color = lerp(lighted_color, _EdgeColor.rgb, edge);

@@ -44,10 +44,10 @@ Material:
     m_Floats:
     - _AnimationSpeed: 0.1
     - _Animation_Speed: 0
-    - _Dissolve: 0
+    - _Dissolve: 0.3
     - _EdgeWidth: 0.1
-    - _Edge_Width: 0
-    - _Noise: 1
+    - _Edge_Width: 0.087
+    - _Noise: 11.8
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
