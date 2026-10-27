@@ -8,6 +8,8 @@ Shader "Custom/Dissolve_Light"
         _EdgeWidth ("Edge Width", Range(0,1)) = 0.1
         _AnimationSpeed ("Animation Speed", Range(0,2)) = 0.1
         [HDR] _EdgeColor ("Edge Color", Color) = (0, 1, 1, 1)
+        //        [ToggleUI] _UseEmission ("Additive Edge", Float) = 0
+        _UseEmission ("Additive Edge", Range(0, 1)) = 0
     }
 
     SubShader
@@ -31,6 +33,7 @@ Shader "Custom/Dissolve_Light"
             float _EdgeWidth;
             float _AnimationSpeed;
             half4 _EdgeColor;
+            float _UseEmission;
         CBUFFER_END
 
         float SampleDissolveNoise(float2 uv)
@@ -60,7 +63,7 @@ Shader "Custom/Dissolve_Light"
 
             #pragma multi_compile_fragment _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
             #pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW _SHADOWS_SOFT_MEDIUM _SHADOWS_SOFT_HIGH
-            
+
             struct Attributes
             {
                 float4 positionOS : POSITION;
@@ -82,7 +85,7 @@ Shader "Custom/Dissolve_Light"
                 OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
                 OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
                 OUT.uv = TRANSFORM_TEX(IN.uv, _NoiseTex);
-                OUT.worldPosition =  TransformObjectToWorld(IN.positionOS.xyz);
+                OUT.worldPosition = TransformObjectToWorld(IN.positionOS.xyz);
                 return OUT;
             }
 
@@ -90,13 +93,15 @@ Shader "Custom/Dissolve_Light"
             {
                 float3 n = normalize(IN.normalWS);
                 float4 shadow_coord = TransformWorldToShadowCoord(IN.worldPosition);
-                Light light = GetMainLight(shadow_coord); 
+                Light light = GetMainLight(shadow_coord);
                 float3 ambient = SampleSH(n);
                 float diffuse = saturate(dot(n, light.direction)) * light.shadowAttenuation;
-                half3 lighted_color = (diffuse * light.color + ambient) * _BaseColor.rgb;
+                float3 lambert = (diffuse * light.color + ambient);
+                half3 lighted_color = lambert * _BaseColor.rgb;
                 float edge = SampleDissolveNoise(IN.uv);
-                half3 color = lerp(lighted_color, _EdgeColor.rgb, edge);
-                return half4(color, 1);
+                half3 edge_replace = lerp(lighted_color, _EdgeColor.rgb, edge);
+                half3 edge_emission = lighted_color + edge * _EdgeColor.rgb;
+                return half4(lerp(edge_replace, edge_emission, _UseEmission), 1);
             }
             ENDHLSL
         }

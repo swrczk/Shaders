@@ -535,7 +535,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 67.8
+  field of view: 68.3
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -561,8 +561,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08013255, y: -0.91401845, z: 0.22196881, w: 0.3299681}
-  m_LocalPosition: {x: 2.1512938, y: 2.5974348, z: 2.1491506}
+  m_LocalRotation: {x: 0.058317047, y: 0.92477846, z: -0.15807529, w: 0.34116876}
+  m_LocalPosition: {x: -3.320267, y: 2.0110154, z: 2.304602}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -815,7 +815,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37346506, y: 0.37259236, z: -0.16705899, w: 0.8329407}
+  m_LocalRotation: {x: 0.34976745, y: 0.4733689, z: -0.2122441, w: 0.7800878}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2028,13 +2028,13 @@ MonoBehaviour:
   targetLight: {fileID: 410087040}
   settings:
     pivot: {x: -0.48027968, y: 0.47106528, z: -1.0205963}
-    cameraYaw: -140.3
-    cameraPitch: 27.3
+    cameraYaw: 139.5
+    cameraPitch: 19.4
     cameraDistance: 4.636153
-    fieldOfView: 67.8
+    fieldOfView: 68.3
     cameraTurntable: 0
     cameraTurntableSpeed: 20
-    lightYaw: 48.199997
+    lightYaw: 62.5
     lightPitch: 48.3
     lightFollowsCamera: 0
     lightIntensity: 2

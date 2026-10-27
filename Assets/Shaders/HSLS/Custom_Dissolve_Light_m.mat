@@ -30,10 +30,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _AnimationSpeed: 0
-    - _Dissolve: 0.421
-    - _EdgeWidth: 0.19
+    - _Dissolve: 0.392
+    - _EdgeWidth: 0.093
+    - _UseEmission: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EdgeColor: {r: 0, g: 1, b: 1, a: 1}
+    - _EdgeColor: {r: 0, g: 4, b: 4, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
