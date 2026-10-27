@@ -84,11 +84,12 @@ Shader "Custom/Dissolve_Light"
             half4 frag(Varyings IN) : SV_Target
             {
                 float3 n = normalize(IN.normalWS);
+                float3 ambient = SampleSH(n);
                 Light light = GetMainLight();
                 float diffuse = saturate(dot(n, light.direction));
-                half3 lighted_color = diffuse * light.color * _BaseColor.rgb;
+                half3 lighted_color = (diffuse * light.color + ambient) * _BaseColor.rgb;
                 float edge = SampleDissolveNoise(IN.uv);
-                half3 color = lerp(lighted_color, _EdgeColor, edge);
+                half3 color = lerp(lighted_color, _EdgeColor.rgb, edge);
                 return half4(color, 1);
             }
             ENDHLSL
