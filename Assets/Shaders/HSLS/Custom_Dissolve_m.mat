@@ -29,9 +29,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AnimationSpeed: 0.036
-    - _Dissolve: 0.496
-    - _EdgeWidth: 0.086
+    - _AnimationSpeed: 0
+    - _Dissolve: 0
+    - _EdgeWidth: 0
     m_Colors:
     - _BaseColor: {r: 0.8207547, g: 0.127759, b: 0.127759, a: 1}
     - _EdgeColor: {r: 0, g: 16, b: 16, a: 1}

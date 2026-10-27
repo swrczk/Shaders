@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Dissolve_m
+  m_Name: Graphs_Dissolve_m
   m_Shader: {fileID: -6465566751694194690, guid: 4c0eeb61bca7f0141b96d356422bfd45, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -43,11 +43,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _AnimationSpeed: 0.1
-    - _Animation_Speed: 0.092
-    - _Dissolve: 0.44
+    - _Animation_Speed: 0
+    - _Dissolve: 0
     - _EdgeWidth: 0.1
-    - _Edge_Width: 0.17
-    - _Noise: 22.52
+    - _Edge_Width: 0
+    - _Noise: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
